@@ -84,7 +84,7 @@
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
-    const alpha = people.sort(function(lastOne, nextOne) {
+    const alpha = people.sort((lastOne, nextOne) => {
       const [aLast, aFirst] = lastOne.split(', ');
       // Destructuring the string into an array with two items
       const [bLast, bFirst] = nextOne.split(', ');
@@ -97,6 +97,20 @@
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
 
+    const transportation = data.reduce(function(obj, item) {
+      if (!obj[item]) {
+        obj[item] = 0;
+      }
+      obj[item]++;
+      return obj;
+    }, {});
+
+    // For a reducer we need a starting state. Theoretically, we don't know the items
+    // in our array yet, so we start with an empty object (second argument in the reducer method).
+    // If the item doesn't exist, we add an entry for it equal to zero. Otherwise,
+    // we increment it's value and return the object.
+
+    console.log(transportation);
   </script>
 </body>
 </html>
